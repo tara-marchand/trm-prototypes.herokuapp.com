@@ -3,13 +3,20 @@
 var path = require('path');
 var express = require('express');
 var app = express();
+var exphbs = require('express-handlebars');
 var winston = app.winston = require('winston');
 var config = require('./config');
+var handlebars = null;
 
 app.set('views', path.join(__dirname, 'views'));
+// http://stackoverflow.com/questions/22278014/how-to-use-html-file-extensions-for-handlebars-in-express
+handlebars = exphbs.create({
+    defaultLayout: 'main',
+    extname: '.hbs'
+});
+app.engine('hbs', handlebars.engine);
 app.set('view engine', 'hbs');
-app.use('/', express.static(path.join(__dirname, '/public')));
-winston.info(path.join(__dirname, '..', 'node_modules'));
+app.use('/public', express.static(path.join(__dirname, '/public')));
 app.use('/node_modules', express.static(path.join(__dirname, '..', 'node_modules')));
 
 require('./routes')(app);
