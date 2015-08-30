@@ -1,16 +1,16 @@
-<div class="spotify-song-collection-view">
+<div class="spotify-songs-view">
     <ul></ul>
 	<div class="small spinner"><div>Loading…</div></div>
 </div>
 
 <script type="text/template" class="spotify-song-view">
-{{{artists.artist[0].name}}}
+\{{{artists.artist[0].name}}}
 </script>
 
 <script id="songs" type="application/json">
     {{{ jsonifiedSongs }}}
 </script>
-<script src="../node_modules/jquery/dist/jquery.min.js" charset="utf-8"></script>
-<script src="../node_modules/underscore/underscore-min.js" charset="utf-8"></script>
-<script src="../node_modules/backbone/backbone-min.js" charset="utf-8"></script>
-<script src="../public/scripts/spotify/spotify-app.js" charset="utf-8"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.2.2/backbone-min.js"></script>
+<script src="scripts/spotify/spotify-app.js" charset="utf-8"></script>

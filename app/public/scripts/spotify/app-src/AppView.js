@@ -1,29 +1,20 @@
+'use strict';
+
 var SpotifySongView = require('./SpotifySongView.js');
 
 var AppView = Backbone.View.extend({
+    collection: $('#songs'),
     el: $('.spotify-songs-view'),
     events: {
     },
     initialize: function() {
-        'use strict';
         this.$list = this.$el.find('ul');
-        this.listenTo(Backbone, 'loader', this.loaderToggle);
     },
-    loaderToggle: function(showOrHide) {
-        'use strict';
-        if (showOrHide === 'show') {
-            this.$el.find('.spinner').removeClass('hidden');
-        } else if (showOrHide === 'hide'){
-            this.$el.find('.spinner').addClass('hidden');
+    render: function() {
+        for (var i = 0; i < this.collection.length; i++) {
+            this.$list.append(_.template('<li>hi</li>')(this.collection[i]));
         }
-    },
-    loaderShow: function() {
-        'use strict';
-        this.loaderToggle('show');
-    },
-    loaderHide: function() {
-        'use strict';
-        this.loaderToggle('hide');
+        this.$el.append(this.$list);
     }
 });
 
