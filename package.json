@@ -9,9 +9,11 @@
   "author": "Tara Marchand",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "nodemon": "^1.4.1"
   },
   "dependencies": {
+    "ember-localstorage-adapter": "^0.5.4",
     "express": "^4.13.3",
     "express-handlebars": "^2.0.1",
     "winston": "^1.0.1"
