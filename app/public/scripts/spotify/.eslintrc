@@ -1,0 +1,8 @@
+{
+    "env": {
+        "browser": true,
+        "jquery": true,
+        "underscore": true,
+        "backbone": true
+    }
+}

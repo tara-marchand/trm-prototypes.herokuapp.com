@@ -1,19 +1,22 @@
+/* globals _, Backbone */
+
 'use strict';
 
-var SpotifySongView = require('./SpotifySongView.js');
+var SpotifySongView = require('./SpotifySongView');
 
 var AppView = Backbone.View.extend({
-    collection: $('#songs'),
+    collection: null,
     el: $('.spotify-songs-view'),
-    events: {
-    },
+
     initialize: function() {
         this.$list = this.$el.find('ul');
+        this.render();
     },
     render: function() {
-        for (var i = 0; i < this.collection.length; i++) {
-            this.$list.append(_.template('<li>hi</li>')(this.collection[i]));
-        }
+        this.$list.html('');
+        _.each(this.collection.models, function(item) {
+            this.$list.append(new SpotifySongView({ model: item }).render().$el);
+        }.bind(this));
         this.$el.append(this.$list);
     }
 });

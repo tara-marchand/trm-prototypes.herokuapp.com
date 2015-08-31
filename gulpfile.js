@@ -14,7 +14,6 @@ var modules = {
     fs: require('fs'),
     // glob: require('glob'),
     vinylSourceStream: require('vinyl-source-stream')
-    // watchify: require('watchify')
 };
 
 // gulp and plugins
@@ -26,7 +25,6 @@ function getTask(task) {
 }
 
 gulp.task('sass', getTask('sass'));
-
 gulp.task('spotify', getTask('spotify'));
 
 // gulp.task('contractors', ['contractors:app']);
@@ -42,9 +40,11 @@ gulp.task('spotify', getTask('spotify'));
 
 gulp.task('watch', ['sass', 'spotify'], function() {
 // gulp.task('watch', ['sass', 'contractors', 'photos', 'spotify', 'sfdata'], function() {
-    gulp.watch('sass/**/*.scss', ['sass']);
-    gulp.watch('public/scripts/spotify/app-src/**/*.js', ['spotify']);
+    gulp.watch('./app/public/stylesheets/*.scss', ['sass']);
+    gulp.watch(config.scriptsDir + '/spotify/app-src/*.js', ['spotify']);
     // gulp.watch('public/scripts/contractors/app-src/**/*.js', ['contractors:app']);
     // gulp.watch('views/jsx/**/*.jsx', ['photos:server', 'photos:browser']);
     // gulp.watch('public/scripts/sfdata/src/*.js', ['sfdata']);
 });
+
+gulp.task('default', ['watch']);
