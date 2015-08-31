@@ -25,6 +25,7 @@ function getTask(task) {
 }
 
 gulp.task('sass', getTask('sass'));
+gulp.task('sfdata-tbd', getTask('sfdata-tbd'));
 gulp.task('spotify', getTask('spotify'));
 
 // gulp.task('contractors', ['contractors:app']);
@@ -36,15 +37,12 @@ gulp.task('spotify', getTask('spotify'));
 // gulp.task('photos:server', getTask('photos/server.js'));
 // gulp.task('photos:browser', getTask('photos/browser.js'));
 
-// gulp.task('sfdata', getTask('sfdata'));
-
-gulp.task('watch', ['sass', 'spotify'], function() {
-// gulp.task('watch', ['sass', 'contractors', 'photos', 'spotify', 'sfdata'], function() {
+gulp.task('watch', ['sass', 'sfdata-tbd', 'spotify'], function() {
     gulp.watch('./app/public/stylesheets/*.scss', ['sass']);
+    gulp.watch(config.scriptsDir + '/sfdata/src/*.js', ['sfdata-tbd']);
     gulp.watch(config.scriptsDir + '/spotify/app-src/*.js', ['spotify']);
     // gulp.watch('public/scripts/contractors/app-src/**/*.js', ['contractors:app']);
     // gulp.watch('views/jsx/**/*.jsx', ['photos:server', 'photos:browser']);
-    // gulp.watch('public/scripts/sfdata/src/*.js', ['sfdata']);
 });
 
 gulp.task('default', ['watch']);
