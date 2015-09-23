@@ -3,9 +3,12 @@
 var path = require('path');
 var express = require('express');
 var app = express();
+var expose = require('express-expose');
+app = expose(app);
 var exphbs = require('express-handlebars');
 var winston = app.winston = require('winston');
-var config = require('./config');
+var expressConfig = require('./config/express.js');
+var secrets = require('./config/secrets.js');
 
 // http://stackoverflow.com/questions/22278014/how-to-use-html-file-extensions-for-handlebars-in-express
 app.use('/', express.static(path.join(__dirname, '/public')));
@@ -20,15 +23,19 @@ app.engine('hbs', exphbs({
 }));
 
 app.set('view engine', 'hbs');
+/* expose config to client side */
+app.expose({
+    socrataAppToken: secrets.socrataAppToken
+}, 'env', 'environment');
 
 require('./routes')(app);
 
-app.listen(config.express.port, config.express.ip, function(error) {
+app.listen(expressConfig.port, expressConfig.ip, function(error) {
     if (error) {
         winston.error('Unable to listen for connections', error);
         process.exit(10);
     }
-    winston.info('Express is listening on http://' + config.express.ip + ':' + config.express.port);
+    winston.info('Express is listening on http://' + expressConfig.ip + ':' + expressConfig.port);
 });
 
 module.exports = app;
