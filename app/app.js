@@ -30,7 +30,7 @@ app.expose({
 
 require('./routes')(app);
 
-app.listen(expressConfig.port, expressConfig.ip, function(error) {
+app.listen(expressConfig.port, function(error) {
     if (error) {
         winston.error('Unable to listen for connections', error);
         process.exit(10);
