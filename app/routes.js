@@ -1,6 +1,7 @@
 'use strict';
 
 var superagent = require('superagent');
+var photosController = require('./controllers/photos');
 
 module.exports = function(app) {
 
@@ -29,6 +30,8 @@ module.exports = function(app) {
                 });
             });
     });
+
+    app.get('/photos', photosController.photosHome);
 
     app.get('/:page', function(req, res) {
         res.render(req.params.page);
