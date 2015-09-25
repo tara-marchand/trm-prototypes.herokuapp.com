@@ -1,1 +1,2 @@
-web: nodemon app/app.js
+watch: gulp watch
+web: nodemon app/app.js --watch app --ignore app/public

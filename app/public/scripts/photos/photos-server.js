@@ -15,6 +15,7 @@ var InstagramImage = React.createClass({displayName: "InstagramImage",
 exports.InstagramImageList = React.createClass({displayName: "InstagramImageList",
     render: function() {
         var images = [];
+
         if (this.props.images !== undefined) {
             images = this.props.images.map(function(image) {
                 return (
@@ -22,6 +23,7 @@ exports.InstagramImageList = React.createClass({displayName: "InstagramImageList
                 );
             });
         }
+
         return (
             React.createElement("ul", null, 
             images

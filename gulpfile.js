@@ -28,7 +28,6 @@ gulp.task('sass', getTask('sass'));
 gulp.task('sfdata-tbd', getTask('sfdata-tbd'));
 gulp.task('spotify', getTask('spotify'));
 
-gulp.task('contractors', ['contractors:app']);
 gulp.task('contractors:app', getTask('contractors/app.js'));
 gulp.task('contractors:test', getTask('contractors/test.js'));
 
@@ -37,7 +36,7 @@ gulp.task('photos:lib', getTask('photos/lib.js'));
 gulp.task('photos:server', getTask('photos/server.js'));
 gulp.task('photos:browser', getTask('photos/browser.js'));
 
-gulp.task('watch', ['sass', 'sfdata-tbd', 'spotify', 'contractors', 'photos'], function() {
+gulp.task('watch', ['sass', 'sfdata-tbd', 'spotify', 'contractors:app', 'photos'], function() {
     gulp.watch('./app/public/stylesheets/*.scss', ['sass']);
     gulp.watch(config.scriptsDir + '/sfdata/src/*.js', ['sfdata-tbd']);
     gulp.watch(config.scriptsDir + '/spotify/app-src/*.js', ['spotify']);
