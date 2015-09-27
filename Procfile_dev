@@ -1,2 +1,3 @@
-watch: gulp watch
+mongo: mongod
 web: nodemon app/app.js --watch app --ignore app/public
+watch: gulp watch
