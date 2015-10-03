@@ -13,7 +13,9 @@ var modules = {
     browserify: require('browserify'),
     fs: require('fs'),
     glob: require('glob'),
-    vinylSourceStream: require('vinyl-source-stream')
+    vinylSourceStream: require('vinyl-source-stream'),
+    precss: require('precss'),
+    autoprefixer: require('autoprefixer')
 };
 
 // gulp and plugins
@@ -24,7 +26,7 @@ function getTask(task) {
     return require('./gulp-tasks/' + task)(gulp, gulpPlugins, modules, config);
 }
 
-gulp.task('sass', getTask('sass'));
+gulp.task('postcss', getTask('postcss'));
 gulp.task('sfdata-tbd', getTask('sfdata-tbd'));
 gulp.task('spotify', getTask('spotify'));
 
@@ -36,8 +38,8 @@ gulp.task('photos:lib', getTask('photos/lib.js'));
 gulp.task('photos:server', getTask('photos/server.js'));
 gulp.task('photos:browser', getTask('photos/browser.js'));
 
-gulp.task('watch', ['sass', 'sfdata-tbd', 'spotify', 'contractors:app', 'photos'], function() {
-    gulp.watch('./app/public/stylesheets/*.scss', ['sass']);
+gulp.task('watch', ['postcss', 'sfdata-tbd', 'spotify', 'contractors:app', 'photos'], function() {
+    gulp.watch('./app/public/stylesheets/*.scss', ['postcss']);
     gulp.watch(config.scriptsDir + '/sfdata/src/*.js', ['sfdata-tbd']);
     gulp.watch(config.scriptsDir + '/spotify/app-src/*.js', ['spotify']);
     gulp.watch('public/scripts/contractors/app-src/**/*.js', ['contractors:app']);
