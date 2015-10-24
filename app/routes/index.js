@@ -37,6 +37,12 @@ exports = module.exports = function(app) {
     app.get('/photos', routes.views.photos);
     app.get('/spotify', routes.views.spotify);
     app.get('/:page', function(req, res) {
+        if (req.url === '/favicon.ico') {
+            res.writeHead(200, { 'Content-Type': 'image/x-icon' } );
+            res.end();
+            console.log('favicon requested');
+            return;
+        }
         var view = new keystone.View(req, res);
         view.render(req.params.page);
     });
