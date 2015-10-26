@@ -77,14 +77,5 @@ gulp.task('nodemon', ['mongo'], function () {
     });
 });
 
-gulp.task('browser-sync', ['nodemon'], function() {
-    modules.browserSync.init(null, {
-        proxy: 'http://localhost:3000',
-        files: ['app/public/**/*.*'],
-        browser: 'google chrome',
-        port: 5000
-    });
-});
-
-gulp.task('serve', ['browser-sync']);
+gulp.task('serve', ['nodemon']);
 gulp.task('default', ['serve']);

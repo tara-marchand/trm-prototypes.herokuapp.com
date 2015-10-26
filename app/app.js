@@ -9,6 +9,7 @@ var expressConfig = require('./config/express.js');
 var secrets = require('./config/secrets.js');
 var keystone = require('keystone');
 var mongoose = require('mongoose');
+var browserSync = require('browser-sync');
 
 app = expose(app);
 // /* expose config to client side */
@@ -54,7 +55,19 @@ require('./models');
 
 keystone.set('routes', require('./routes'));
 
-keystone.start();
+keystone.start({
+    onHttpServerCreated: function() {
+        // use browserSync if in development
+        if (keystone.get('env') === 'development') {
+            browserSync.init(null, {
+                proxy: 'http://localhost:3000',
+                files: ['app/public/**/*.*'],
+                browser: 'google chrome',
+                port: 5000
+            });
+        }
+    }
+});
 
 // http://stackoverflow.com/questions/22278014/how-to-use-html-file-extensions-for-handlebars-in-express
 // app.use('/', express.static(path.join(__dirname, '/public')));

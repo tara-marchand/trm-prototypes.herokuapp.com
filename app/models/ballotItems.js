@@ -45,8 +45,6 @@ Person = new keystone.List('Person', {
 Person.add({
     name: { type: Types.Name, required: true },
     occupation: { type: Types.Text, required: true }
-    // password: { type: Types.Password, initial: true },
-    // canAccessKeystone: { type: Boolean, initial: true }
 });
 
 Person.register();
