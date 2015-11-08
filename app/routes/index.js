@@ -25,6 +25,7 @@ keystone.set('500', function(err, req, res, next) {
     }
     res.err(err, title, message);
 });
+console.log(process);
 
 // load routes
 var routes = {
