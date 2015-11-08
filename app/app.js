@@ -9,7 +9,7 @@ var expressConfig = require('./config/express.js');
 var secrets = require('./config/secrets.js');
 var keystone = require('keystone');
 var mongoose = require('mongoose');
-var browserSync = require('browser-sync');
+//var browserSync = require('browser-sync');
 
 app = expose(app);
 // /* expose config to client side */
