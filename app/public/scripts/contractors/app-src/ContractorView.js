@@ -5,7 +5,7 @@ var ContractorView = Backbone.View.extend({
         'click a': 'toggleEdit',
         'click .delete': 'delete',
         'click .cancel': 'cancel',
-        'click .save': 'save'   
+        'click .save': 'save'
     },
     // id: 'contractor-' + Contractor.id,
     model: Contractor,
@@ -15,7 +15,8 @@ var ContractorView = Backbone.View.extend({
     initialize: function() {
         'use strict';
         this.listenTo(this.model, 'change', this.render);
-        this.model.bind('remove', this.remove, this);
+//        this.model.bind('remove', this.remove, this);
+        this.model.bind('remove', () => this.remove());
     },
     render: function() {
         'use strict';

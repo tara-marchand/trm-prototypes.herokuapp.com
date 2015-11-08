@@ -11,6 +11,12 @@ module.exports = function (gulp, gulpPlugins, modules, config) {
             })
             .bundle()
             .pipe(modules.vinylSourceStream('contractors-app.js'))
+            .pipe(modules.vinylBuffer())
+            .pipe(gulpPlugins.sourcemaps.init({ loadMaps: true }))
+            .pipe(gulpPlugins.babel({
+                presets: ['es2015']
+            }))
+            .pipe(gulpPlugins.sourcemaps.write('./'))
             .pipe(gulp.dest(contractorsDir));
     };
 };

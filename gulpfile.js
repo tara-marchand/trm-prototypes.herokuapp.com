@@ -14,6 +14,7 @@ var modules = {
     browserSync: require('browser-sync').create(),
     fs: require('fs'),
     glob: require('glob'),
+    vinylBuffer: require('vinyl-buffer'),
     vinylSourceStream: require('vinyl-source-stream'),
     precss: require('precss'),
     autoprefixer: require('autoprefixer'),
@@ -62,7 +63,7 @@ gulp.task('mongo', function() {
     });
 });
 
-gulp.task('nodemon', ['mongo'], function () {
+gulp.task('nodemon', ['mongo', 'watch'], function () {
     var started = false;
 
     return gulpPlugins.nodemon({

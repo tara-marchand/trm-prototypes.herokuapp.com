@@ -56,17 +56,17 @@ require('./models');
 keystone.set('routes', require('./routes'));
 
 keystone.start({
-    onHttpServerCreated: function() {
+    // onHttpServerCreated: function() {
         // use browserSync if in development
-        if (keystone.get('env') === 'development') {
-            browserSync.init(null, {
-                proxy: 'http://localhost:3000',
-                files: ['app/public/**/*.*'],
-                browser: 'google chrome',
-                port: 5000
-            });
-        }
-    }
+    //     if (keystone.get('env') === 'development') {
+    //         browserSync.init(null, {
+    //             proxy: 'http://localhost:3000',
+    //             files: ['app/public/**/*.*'],
+    //             browser: 'google chrome',
+    //             port: 5000
+    //         });
+    //     }
+    // }
 });
 
 // http://stackoverflow.com/questions/22278014/how-to-use-html-file-extensions-for-handlebars-in-express
