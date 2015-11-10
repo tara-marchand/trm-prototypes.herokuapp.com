@@ -1,3 +1,5 @@
+'use strict';
+
 var ContractorView = require('./ContractorView.js');
 
 var AppView = Backbone.View.extend({
@@ -6,7 +8,6 @@ var AppView = Backbone.View.extend({
         'click .add-contractor': 'createContractor'
     },
     initialize: function() {
-        'use strict';
         this.$list = this.$el.find('ul');
         this.$input = this.$el.find('.new-contractor');
         // by listening to when the collection changes, we can add new items in real time
@@ -15,23 +16,19 @@ var AppView = Backbone.View.extend({
         this.fetchContractors();
     },
     fetchContractors: function() {
-        'use strict';
         this.loaderShow();
         this.collection.fetch({ success: _.bind(this.loaderHide, this) });
     },
     syncContractors: function() {
-        'use strict';
         this.loaderShow();
         this.collection.sync({ success: _.bind(this.loaderHide, this) });
     },
     addContractor: function(contractor) {
-        'use strict';
         var view = new ContractorView({ model: contractor });
         this.$list.append(view.render().el);
         contractor.save();
     },
     loaderToggle: function(showOrHide) {
-        'use strict';
         if (showOrHide === 'show') {
             this.$el.find('.spinner').removeClass('hidden');
         } else if (showOrHide === 'hide'){
@@ -39,15 +36,12 @@ var AppView = Backbone.View.extend({
         }
     },
     loaderShow: function() {
-        'use strict';
         this.loaderToggle('show');
     },
     loaderHide: function() {
-        'use strict';
         this.loaderToggle('hide');
     },
     createContractor: function() {
-        'use strict';
         if (!this.$input.val()) {
             return;
         }

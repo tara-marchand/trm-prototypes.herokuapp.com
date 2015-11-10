@@ -11,6 +11,8 @@
         }return n[o].exports;
     }var i = typeof require == "function" && require;for (var o = 0; o < r.length; o++) s(r[o]);return s;
 })({ 1: [function (require, module, exports) {
+        'use strict';
+
         var ContractorView = require('./ContractorView.js');
 
         var AppView = Backbone.View.extend({
@@ -19,8 +21,6 @@
                 'click .add-contractor': 'createContractor'
             },
             initialize: function initialize() {
-                'use strict';
-
                 this.$list = this.$el.find('ul');
                 this.$input = this.$el.find('.new-contractor');
                 // by listening to when the collection changes, we can add new items in real time
@@ -29,27 +29,19 @@
                 this.fetchContractors();
             },
             fetchContractors: function fetchContractors() {
-                'use strict';
-
                 this.loaderShow();
                 this.collection.fetch({ success: _.bind(this.loaderHide, this) });
             },
             syncContractors: function syncContractors() {
-                'use strict';
-
                 this.loaderShow();
                 this.collection.sync({ success: _.bind(this.loaderHide, this) });
             },
             addContractor: function addContractor(contractor) {
-                'use strict';
-
                 var view = new ContractorView({ model: contractor });
                 this.$list.append(view.render().el);
                 contractor.save();
             },
             loaderToggle: function loaderToggle(showOrHide) {
-                'use strict';
-
                 if (showOrHide === 'show') {
                     this.$el.find('.spinner').removeClass('hidden');
                 } else if (showOrHide === 'hide') {
@@ -57,18 +49,12 @@
                 }
             },
             loaderShow: function loaderShow() {
-                'use strict';
-
                 this.loaderToggle('show');
             },
             loaderHide: function loaderHide() {
-                'use strict';
-
                 this.loaderToggle('hide');
             },
             createContractor: function createContractor() {
-                'use strict';
-
                 if (!this.$input.val()) {
                     return;
                 }
@@ -81,6 +67,8 @@
 
         module.exports = AppView;
     }, { "./ContractorView.js": 4 }], 2: [function (require, module, exports) {
+        'use strict';
+
         var Contractor = Backbone.Model.extend({
             defaults: {
                 name: 'New Contractor',
@@ -90,6 +78,8 @@
 
         module.exports = Contractor;
     }, {}], 3: [function (require, module, exports) {
+        'use strict';
+
         var Contractor = require('./Contractor.js');
 
         // create a Firebase collection and set the 'url' property to the URL of our Firebase app
@@ -99,6 +89,8 @@
             autoSync: false
         });
     }, { "./Contractor.js": 2 }], 4: [function (require, module, exports) {
+        'use strict';
+
         var Contractor = require('./Contractor.js');
 
         var ContractorView = Backbone.View.extend({
@@ -108,58 +100,53 @@
                 'click .cancel': 'cancel',
                 'click .save': 'save'
             },
+
             // id: 'contractor-' + Contractor.id,
             model: Contractor,
             tagName: 'li',
             template: _.template($('.contractor-view').html()),
             isBeingEdited: false,
-            initialize: function initialize() {
-                'use strict';
 
+            initialize: function initialize() {
                 var _this = this;
 
                 this.listenTo(this.model, 'change', this.render);
-                //        this.model.bind('remove', this.remove, this);
+                // this.model.bind('remove', this.remove, this);
                 this.model.bind('remove', function () {
                     return _this.remove();
                 });
             },
-            render: function render() {
-                'use strict';
 
+            render: function render() {
                 this.$el.html(this.template(this.model.toJSON()));
                 return this;
             },
-            toggleEdit: function toggleEdit(e) {
-                'use strict';
 
+            toggleEdit: function toggleEdit(e) {
                 e.preventDefault();
                 this.isBeingEdited = !this.isBeingEdited;
                 this.$el.find('.edit-fields').toggleClass('hidden', !this.isBeingEdited);
             },
-            delete: function _delete() {
-                'use strict';
 
+            delete: function _delete() {
                 this.model.destroy();
                 this.$el.remove();
             },
-            cancel: function cancel() {
-                'use strict';
 
+            cancel: function cancel() {
                 this.$el.find('.edit-fields').addClass('hidden');
             },
-            showLoader: function showLoader() {
-                'use strict';
 
+            showLoader: function showLoader() {
                 Backbone.trigger('loader', 'show');
             },
-            hideLoader: function hideLoader() {
-                'use strict';
 
+            hideLoader: function hideLoader() {
                 Backbone.trigger('loader', 'hide');
             },
+
             save: function save(e) {
-                'use strict';
+                var _this2 = this;
 
                 e.preventDefault();
 
@@ -179,7 +166,9 @@
                 }
 
                 this.model.set(modelToSave);
-                this.model.save(modelToSave, { success: _.bind(this.hideLoader, this) });
+                this.model.save(modelToSave, { success: function success() {
+                        return _this2.hideLoader();
+                    } });
             }
         });
 

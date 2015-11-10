@@ -1,3 +1,5 @@
+'use strict';
+
 var Contractor = Backbone.Model.extend({
     defaults: {
         name: 'New Contractor',
