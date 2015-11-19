@@ -11,7 +11,6 @@ module.exports = function (gulp, gulpPlugins, modules, config) {
             })
             .exclude('superagent')
             .exclude('react')
-            .exclude('react-async');
         // var watcher = modules.watchify(bundler);
         // watcher.on('update', function() {
         //     watcher.bundle()

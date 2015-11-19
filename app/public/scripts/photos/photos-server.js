@@ -1,6 +1,6 @@
+'use strict';
+
 var React = require('react');
-var ReactAsync = require('react-async');
-var superagent = require('superagent');
 
 module.exports = exports = {};
 

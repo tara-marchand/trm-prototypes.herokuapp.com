@@ -3,6 +3,7 @@
 var superagent = require('superagent');
 var secrets = require('../../config/secrets');
 var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 var keystone = require('keystone');
 
 exports = module.exports = function(req, res) {
@@ -18,7 +19,8 @@ exports = module.exports = function(req, res) {
             var images = res2.body.data;
             var instagram = require('../../public/scripts/photos/photos-server');
             var instagramImageList = React.createFactory(instagram.InstagramImageList);
-            var renderedList = React.renderToString(instagramImageList({
+
+            var renderedList = ReactDOMServer.renderToString(instagramImageList({
                 images: images,
                 initialCount: 0
             }));

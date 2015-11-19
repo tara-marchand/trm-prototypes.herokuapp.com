@@ -1,7 +1,8 @@
 {
     "ecmaFeatures": {
         "arrowFunctions": true,
-        "objectLiteralShorthandMethods": true
+        "objectLiteralShorthandMethods": true,
+        "jsx": true
     },
     "env": {
         "browser": true,
@@ -13,5 +14,8 @@
         "quotes": [2, "single"],
         "strict": [1, "global"],
         "camelcase": [0]
-    }
+    },
+    "plugins": [
+        "react"
+    ]
 }

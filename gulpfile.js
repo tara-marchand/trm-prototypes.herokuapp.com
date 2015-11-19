@@ -36,12 +36,14 @@ gulp.task('spotify', getTask('spotify'));
 gulp.task('contractors:app', getTask('contractors/app.js'));
 gulp.task('contractors:test', getTask('contractors/test.js'));
 
+gulp.task('contractors-react:app', getTask('contractors-react/app.js'));
+
 gulp.task('photos', ['photos:lib', 'photos:server', 'photos:browser']);
 gulp.task('photos:lib', getTask('photos/lib.js'));
 gulp.task('photos:server', getTask('photos/server.js'));
 gulp.task('photos:browser', getTask('photos/browser.js'));
 
-gulp.task('watch', ['postcss', 'sfdata-tbd', 'spotify', 'contractors:app', 'photos'], function() {
+gulp.task('watch', ['postcss', 'sfdata-tbd', 'spotify', 'contractors:app', 'contractors-react:app', 'photos'], function() {
     // modules.browserSync.init({
     //     proxy: 'localhost:3000'
     // });
