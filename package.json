@@ -2,7 +2,8 @@
   "name": "trm-prototypes",
   "version": "1.0.0",
   "engines": {
-    "node": "5.0.0"
+    "node": "5.2.0",
+    "npm": "3.3.12"
   },
   "description": "Tara's prototypes, experiments, and one-offs",
   "private": true,
