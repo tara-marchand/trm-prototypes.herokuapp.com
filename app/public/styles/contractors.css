@@ -39,7 +39,6 @@
 	background: #eee;
 	box-shadow: 0 3.5em #eee; /* container height - part height */
 	-webkit-transform-origin: 50% 2.5em;
-	    -ms-transform-origin: 50% 2.5em;
 	        transform-origin: 50% 2.5em; /* container height / 2 */
 }
 
@@ -49,21 +48,18 @@
 
 .spinner:after {
 	-webkit-transform: rotate(-45deg);
-	    -ms-transform: rotate(-45deg);
 	        transform: rotate(-45deg);
 	background: #777;
 }
 
 .spinner > div:before {
 	-webkit-transform: rotate(-90deg);
-	    -ms-transform: rotate(-90deg);
 	        transform: rotate(-90deg);
 	background: #999;
 }
 
 .spinner > div:after {
 	-webkit-transform: rotate(-135deg);
-	    -ms-transform: rotate(-135deg);
 	        transform: rotate(-135deg);
 	background: #bbb;
 }
