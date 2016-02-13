@@ -1,1 +1,3 @@
-web: gulp
+mongo: gulp mongo
+watch: gulp watch
+nodemon: gulp nodemon
