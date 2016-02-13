@@ -1,6 +1,7 @@
 'use strict';
 
 var React = require('react');
+var ReactDOM = require('react-dom');
 
 module.exports = exports = {};
 
@@ -37,7 +38,7 @@ if (typeof window !== 'undefined') {
     var container = document.getElementsByClassName('react')[0];
     var images = JSON.parse(document.getElementById('images').innerHTML);
     var instagramImageList = React.createFactory(exports.InstagramImageList);
-    React.render(instagramImageList({
+    ReactDOM.render(instagramImageList({
         images: images
     }), container);
 
