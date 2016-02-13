@@ -1,5 +1,8 @@
 'use strict';
 
+require('dotenv').config();
+require('es6-promise').polyfill();
+
 // http://macr.ae/article/splitting-gulpfile-multiple-files.html (approach 2)
 
 var config = {
@@ -65,7 +68,8 @@ gulp.task('mongo', function() {
     });
 });
 
-gulp.task('nodemon', ['mongo', 'watch'], function () {
+gulp.task('nodemon', [], function () {
+// gulp.task('nodemon', ['mongo', 'watch'], function () {
     var started = false;
 
     return gulpPlugins.nodemon({

@@ -7,7 +7,8 @@ module.exports = function (gulp, gulpPlugins, modules, config) {
         modules.browserify({
                 debug: true,
                 exclude: ['jquery', 'underscore', 'backbone', 'firebase'],
-                entries: contractorsDir + '/app-src/app.js'
+                entries: contractorsDir + '/app-src/app.js',
+                transform: ['envify']
             })
             .bundle()
             .pipe(modules.vinylSourceStream('contractors-app.js'))
